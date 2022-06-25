@@ -1,1 +1,33 @@
-<p>post-detail works!</p>
+<h1 class="text-center">Post Details</h1>
+<hr>
+<div class="border rounded border-primary mb-3 p-3" style="width: 60%; height: 300px; margin: auto;">
+  <form [formGroup]="postForm">
+    <div class="row mb-3">
+      <div class="col-3">
+        <b><label for="name">Name:</label></b>
+      </div>
+      <input id="name" type="text" formControlName="name" class="col-9 border-0" readonly />
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <b><label for="email">Email:</label></b>
+      </div>
+      <input id="email" type="text" formControlName="email" class="col-9 border-0" readonly />
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <b><label for="body">Comment:</label></b>
+      </div>
+      <input id="body" type="text" formControlName="body" class="col-9 border-0" />
+    </div>
+    <div class="row align-self-end text-center">
+      <div class="col-6">
+        <button type="button" class="btn btn-primary" class="btn btn-outline-dark" (click)="updatePost()">Update</button>
+      </div>
+      <div class="col-6">
+        <button type="button" class="btn btn-outline-primary" class="btn btn-outline-dark"
+          (click)="backToPostList()">back</button>
+      </div>
+    </div>
+  </form>
+</div>
