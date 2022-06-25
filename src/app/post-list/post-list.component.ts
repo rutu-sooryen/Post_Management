@@ -28,7 +28,6 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     this.postDetailId = localStorage.getItem('postDetailId');
     this.postDetail = localStorage.getItem('postList');
-    console.log("this.postDetail", this.postDetail);
     if (this.postDetail) {
       this.posts = JSON.parse(this.postDetail);
     } else {
@@ -40,6 +39,8 @@ export class PostListComponent implements OnInit {
     this.postService.getPostList().subscribe((res) => {
       localStorage.setItem('postList', JSON.stringify(res));
       this.posts = res;
+    }, () => {
+      this.router.navigate(['page-not-found']);
     });
   }
 
@@ -54,6 +55,8 @@ export class PostListComponent implements OnInit {
       this.closeResult = `Closed with: ${result}`;
       this.postService.deletePost(post.id).subscribe(() => {
         this.getPostList();
+      }, () => {
+        this.router.navigate(['page-not-found']);
       });
     }, (reason: any) => {
       this.closeResult = `Dismissed ${reason}`;

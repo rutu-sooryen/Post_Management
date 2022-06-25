@@ -30,16 +30,15 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.postDetailId = localStorage.getItem('postDetailId');
     this.postDetail = localStorage.getItem('postDetail');
-    console.log("this.postDetail", this.postDetail);
     if (this.postDetail) {
-      console.log("if");
       this.post = JSON.parse(this.postDetail);
       this.updatePostFormValue();
     } else {
-      console.log("else api call");
       this.postService.getPostDetail(this.postDetailId).subscribe((result) => {
         this.post = result;
         this.updatePostFormValue();
+      },()=>{
+        this.router.navigate(['page-not-found']);
       });
     }
   }
@@ -56,6 +55,8 @@ export class PostDetailComponent implements OnInit {
     this.postService.updatePost(this.postForm.value).subscribe((res) => {
       this.postForm.controls.body.patchValue(res.body);
       this.router.navigate(['']);
+    }, ()=>{
+      this.router.navigate(['page-not-found']);
     });
   }
 
