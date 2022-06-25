@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
+    FontAwesomeModule,
     ReactiveFormsModule
   ],
   providers: [HttpClient],

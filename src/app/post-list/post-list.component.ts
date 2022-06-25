@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/models/post.model';
 import { PostService } from 'src/services/post.service';
@@ -15,6 +16,8 @@ export class PostListComponent implements OnInit {
   postDetailId: number | any;
   postDetail: any;
   posts: Post[] | any = [];
+  faEdit = faPenToSquare;
+  faTrash = faTrashCan;
 
   constructor(
     private postService: PostService,
